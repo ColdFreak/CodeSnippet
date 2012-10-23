@@ -7,7 +7,8 @@ struct sigaction osa;
 void bypass_sigint(int sig_no) {
 	printf("I tap SIGINT and returns back\n");
 
-	/* reset sigaction handler */
+	/* reset sigaction handler 
+	 * 好像这个全局osa就是为了重置的*/
 	sigaction(SIGINT, &osa, NULL);
 	
 	/* 因为pid是0， 所以SIGINT会被送到所有那些
