@@ -1,4 +1,5 @@
 /*不用加减乘除法计算整数的9倍*/
+/**/
 #include <stdio.h>
 
 int mul_9(int number) {
