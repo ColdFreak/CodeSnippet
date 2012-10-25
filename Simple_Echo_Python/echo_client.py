@@ -2,16 +2,28 @@
 
 """
 A simple echo client
+Run this without the server running
+the error will be caught
 """
 
 import socket
+import sys
 
 host = '192.168.1.100'
 port = 50000
 size = 1024
-s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-s.connect((host, port))
+s = None
+
+try:
+	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+	s.connect((host, port))
+except socket.error, (value, message):
+	if s:
+		s.close()
+	print "Could not open socket: " + message
+	sys.exit(1)
+
 s.send('Hello, world')
-data = s.recv(size) # 一次性最大处理size个字节的数据
+data = s.recv(size)
 s.close()
 print 'Received', data
