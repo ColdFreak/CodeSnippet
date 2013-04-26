@@ -1,3 +1,5 @@
+/* get local ip address using libpcap function
+ * findalldevs()  */
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
